@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 540" font-family="Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1F4E79"/>
+    </marker>
+    <linearGradient id="ingHeader" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2E74B5"/>
+      <stop offset="100%" stop-color="#1F4E79"/>
+    </linearGradient>
+    <linearGradient id="recHeader" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7B3F97"/>
+      <stop offset="100%" stop-color="#5A2D70"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="490" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#1F4E79">Cookbook — Schema Diagram</text>
+  <text x="490" y="62" text-anchor="middle" font-size="13" fill="#666">Two entities linked by a 1:N relationship through Recipe.ingredientList</text>
+
+  <!-- Ingredient entity -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="100" width="280" height="340" rx="8" fill="#FFFFFF" stroke="#1F4E79" stroke-width="2"/>
+    <rect x="60" y="100" width="280" height="44" rx="8" fill="url(#ingHeader)"/>
+    <rect x="60" y="130" width="280" height="14" fill="url(#ingHeader)"/>
+    <text x="200" y="130" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">Ingredient</text>
+
+    <!-- attributes -->
+    <g font-size="13" fill="#222">
+      <text x="78" y="172"><tspan font-weight="bold">id</tspan>  <tspan fill="#777">: string (PK)</tspan></text>
+      <text x="78" y="196">name <tspan fill="#777">: string</tspan></text>
+      <text x="78" y="220">unit <tspan fill="#777">: enum (g, kg, ml, ...)</tspan></text>
+      <text x="78" y="244">caloriesPer100 <tspan fill="#777">: number</tspan></text>
+      <text x="78" y="268">proteinPer100 <tspan fill="#777">: number</tspan></text>
+      <text x="78" y="292">carbsPer100 <tspan fill="#777">: number</tspan></text>
+      <text x="78" y="316">fatPer100 <tspan fill="#777">: number</tspan></text>
+      <text x="78" y="340">createdAt <tspan fill="#777">: ISO date</tspan></text>
+      <text x="78" y="364">updatedAt <tspan fill="#777">: ISO date</tspan></text>
+    </g>
+
+    <!-- DAO methods divider -->
+    <line x1="60" y1="380" x2="340" y2="380" stroke="#CCC" stroke-width="1"/>
+    <text x="78" y="400" font-size="11" font-weight="bold" fill="#1F4E79" letter-spacing="1">DAO METHODS</text>
+    <g font-size="11" fill="#444" font-family="Courier New, monospace">
+      <text x="78" y="418">create, get, list,</text>
+      <text x="78" y="432">update, delete</text>
+    </g>
+  </g>
+
+  <!-- Recipe entity -->
+  <g filter="url(#shadow)">
+    <rect x="640" y="100" width="280" height="380" rx="8" fill="#FFFFFF" stroke="#5A2D70" stroke-width="2"/>
+    <rect x="640" y="100" width="280" height="44" rx="8" fill="url(#recHeader)"/>
+    <rect x="640" y="130" width="280" height="14" fill="url(#recHeader)"/>
+    <text x="780" y="130" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">Recipe</text>
+
+    <g font-size="13" fill="#222">
+      <text x="658" y="172"><tspan font-weight="bold">id</tspan> <tspan fill="#777">: string (PK)</tspan></text>
+      <text x="658" y="196">name <tspan fill="#777">: string</tspan></text>
+      <text x="658" y="220">description <tspan fill="#777">: string</tspan></text>
+      <text x="658" y="244">instructions <tspan fill="#777">: string</tspan></text>
+      <text x="658" y="268">preparationTime <tspan fill="#777">: integer</tspan></text>
+      <text x="658" y="292">servings <tspan fill="#777">: integer</tspan></text>
+      <text x="658" y="316">category <tspan fill="#777">: enum</tspan></text>
+      <text x="658" y="340" fill="#B8460E" font-weight="bold">ingredientList[] <tspan fill="#777" font-weight="normal">: FK → Ingredient</tspan></text>
+      <text x="658" y="364">nutrition <tspan fill="#777">: { calories, protein, ... }</tspan></text>
+      <text x="658" y="388">createdAt <tspan fill="#777">: ISO date</tspan></text>
+      <text x="658" y="412">updatedAt <tspan fill="#777">: ISO date</tspan></text>
+    </g>
+
+    <line x1="640" y1="426" x2="920" y2="426" stroke="#CCC" stroke-width="1"/>
+    <text x="658" y="446" font-size="11" font-weight="bold" fill="#5A2D70" letter-spacing="1">DAO METHODS</text>
+    <g font-size="11" fill="#444" font-family="Courier New, monospace">
+      <text x="658" y="464">create, get, list, update,</text>
+      <text x="658" y="478">delete, findByIngredientId</text>
+    </g>
+  </g>
+
+  <!-- Relationship line -->
+  <line x1="340" y1="270" x2="640" y2="270" stroke="#1F4E79" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Cardinality labels -->
+  <rect x="350" y="248" width="22" height="22" rx="4" fill="#1F4E79"/>
+  <text x="361" y="263" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">1</text>
+  <rect x="608" y="248" width="22" height="22" rx="4" fill="#1F4E79"/>
+  <text x="619" y="263" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">N</text>
+
+  <!-- Relationship label -->
+  <text x="490" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F4E79">contains</text>
+  <text x="490" y="290" text-anchor="middle" font-size="11" fill="#666" font-style="italic">via ingredientList</text>
+
+  <!-- Footer note -->
+  <rect x="60" y="500" width="860" height="30" rx="4" fill="#FFF4D6" stroke="#E0B040" stroke-width="1"/>
+  <text x="490" y="520" text-anchor="middle" font-size="12" fill="#7A5500">
+    <tspan font-weight="bold">Constraint:</tspan>  an Ingredient cannot be deleted while it is referenced by at least one Recipe.
+  </text>
+</svg>
