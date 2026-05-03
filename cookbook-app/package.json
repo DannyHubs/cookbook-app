@@ -1,0 +1,22 @@
+{
+  "name": "cookbook-app",
+  "version": "1.0.0",
+  "description": "Cookbook backend - manage recipes and ingredients with nutrition values",
+  "main": "src/bin/run.js",
+  "scripts": {
+    "start": "node src/bin/run.js",
+    "dev": "nodemon src/bin/run.js"
+  },
+  "keywords": ["cookbook", "recipes", "nutrition", "express"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
