@@ -137,19 +137,31 @@ The response includes `nutrition` calculated automatically from the ingredients.
 ## 📁 Project Structure
 
 ```
-cookbook-app/
-├── src/
-│   ├── abl/                    # Application Business Logic
-│   │   ├── ingredient/
-│   │   └── recipe/
-│   ├── controllers/            # Express routers
-│   ├── dao/                    # Data Access Objects
-│   │   └── storage/            # JSON file storage
-│   ├── validation-types/       # JSON Schema dtoIn types
-│   ├── bin/                    # Entry point
-│   └── app.js                  # Express app setup
-├── package.json
-└── README.md
+cookbook-app/ (Main Project Folder)
+
+src/
+
+abl/ – Application Business Logic
+
+ingredient/
+
+recipe/
+
+controllers/ – Express routers
+
+dao/ – Data Access Objects
+
+storage/ – JSON file storage
+
+validation-types/ – JSON Schema dtoIn types
+
+bin/ – Entry point
+
+app.js – Express app setup
+
+package.json
+
+README.md
 ```
 
 ## 📄 License
