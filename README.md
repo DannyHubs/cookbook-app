@@ -19,19 +19,41 @@ The application is **publicly accessible without registration or login** — the
 The application contains exactly two entities linked by a relationship:
 
 ```
-┌─────────────────┐         ┌──────────────────┐
-│   Ingredient    │ 1 ──── N│      Recipe      │
-├─────────────────┤         ├──────────────────┤
-│ id              │         │ id               │
-│ name            │         │ name             │
-│ unit            │         │ description      │
-│ caloriesPer100  │         │ instructions     │
-│ proteinPer100   │         │ preparationTime  │
-│ carbsPer100     │         │ servings         │
-│ fatPer100       │         │ category         │
-└─────────────────┘         │ ingredientList[] │── references Ingredient
-                            │ nutrition{}      │
-                            └──────────────────┘
+Ingredient Entity
+
+id: (String/UUID)
+
+name: (String)
+
+unit: (String)
+
+caloriesPer100: (Number)
+
+proteinPer100: (Number)
+
+carbsPer100: (Number)
+
+fatPer100: (Number)
+
+Recipe Entity
+
+id: (String/UUID)
+
+name: (String)
+
+description: (String)
+
+instructions: (String)
+
+preparationTime: (Number)
+
+servings: (Number)
+
+category: (String)
+
+ingredientList: (Array) – This contains references linking back to the Ingredient IDs.
+
+nutrition: (Object)
 ```
 
 A **Recipe** contains many **Ingredient** references (with amount), and one **Ingredient** can be used in many recipes.
